@@ -6,13 +6,14 @@ using UnityEngine.InputSystem;
 public class EventManager : MonoBehaviour
 {
 
-    public event System.Action SpacebarPress;
+    public event System.Action<float> SpacebarPress;
+    public float sentFloatValue;
     public void ButtonPress(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            SpacebarPress.Invoke();
-            Debug.Log("Received button press input with context of:" + context.phase);
+            SpacebarPress?.Invoke(sentFloatValue);
+            Debug.Log("Invoked SoacebarPress event!");
 
         }
     }

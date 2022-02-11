@@ -9,16 +9,14 @@ public class Cube1Script : MonoBehaviour
     {
         evMan.SpacebarPress += MoveUp;
     }
-
-    // Update is called once per frame
     private void OnDestroy()
     {
         evMan.SpacebarPress -= MoveUp;
     }
 
-    void MoveUp()
+    void MoveUp(float receivedFloat)
     {
         Debug.Log("Cube 1 is moving up!");
-        transform.position += Vector3.up;
+        transform.position += new Vector3(0f, receivedFloat, 0f);
     }
 }
